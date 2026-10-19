@@ -602,7 +602,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     }
 
     /** Shows the Wi-Fi network name on the button when we can read it, otherwise the connection type. */
-    // Signal bars only (no network name, so screenshots stay private); text only when something is wrong.
     private void updateWifiLabel() {
         ConnectivityManager cm = getSystemService(ConnectivityManager.class);
         Network net = cm != null ? cm.getActiveNetwork() : null;
@@ -624,14 +623,24 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             setWifiPill(WIFI_ICONS[bars], getString(R.string.no_internet), COLOR_WARN);
             return;
         }
-        setWifiPill(WIFI_ICONS[bars], getString(R.string.wifi), 0);
+        String ssid = info != null ? info.getSSID() : null;
+        if (ssid != null && ssid.startsWith("\"") && ssid.endsWith("\"") && ssid.length() >= 2) {
+            ssid = ssid.substring(1, ssid.length() - 1);
+        }
+        boolean known = ssid != null && !ssid.isEmpty() && !ssid.contains("<unknown ssid>");
+        setWifiPill(WIFI_ICONS[bars], known ? ssid : getString(R.string.wifi), 0, known);
     }
 
     private void setWifiPill(int icon, String label, int alertColor) {
+        setWifiPill(icon, label, alertColor, false);
+    }
+
+    private void setWifiPill(int icon, String label, int alertColor, boolean forcePill) {
         btnWifi.setCompoundDrawablesRelativeWithIntrinsicBounds(icon, 0, 0, 0);
         btnWifi.setContentDescription(label);
-        // Healthy: a round icon button like Inputs and Settings. Alert: a pill with the status text.
-        boolean iconOnly = alertColor == 0;
+        // Healthy and no network name to show: a round icon button like Inputs and Settings.
+        // Alert, or a known network name: a pill with the text (coloured bullet only for alerts).
+        boolean iconOnly = alertColor == 0 && !forcePill;
         ViewGroup.LayoutParams lp = btnWifi.getLayoutParams();
         lp.width = iconOnly ? (int) (42 * density) : ViewGroup.LayoutParams.WRAP_CONTENT;
         btnWifi.setLayoutParams(lp);
@@ -639,6 +648,10 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         btnWifi.setCompoundDrawablePadding(iconOnly ? 0 : (int) (9 * density));
         if (iconOnly) {
             btnWifi.setText("");
+            return;
+        }
+        if (alertColor == 0) {
+            btnWifi.setText(label);
             return;
         }
         SpannableString text = new SpannableString("\u25CF  " + label);
