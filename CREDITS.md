@@ -26,6 +26,5 @@ under the SIL Open Font License.
 
 The dock icons for YouTube, Netflix, Prime Video and AirPlay are trademarks of their owners and are not in
 this repo. `tools/make_dock_icons.py` draws them on your machine. The Prime Video wordmark comes from
-[Simple Icons](https://simpleicons.org) (CC0). `tools/make_extra_dock_icons.py` draws simplified,
-non-trademark tiles for Crunchyroll and HBO Max in the same style (brand color + monogram/wordmark),
-for personal use.
+[Simple Icons](https://simpleicons.org) (CC0). Apps without hand-drawn art (e.g. Crunchyroll, HBO Max)
+fill the dock tile with their own installed app icon instead (`AppAdapter`'s `fill` branch).

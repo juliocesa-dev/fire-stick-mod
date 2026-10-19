@@ -559,6 +559,11 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private static final int[] WEEKDAY_BACKGROUNDS = {
             R.drawable.bg_sunday, R.drawable.bg_monday, R.drawable.bg_tuesday, R.drawable.bg_wednesday,
             R.drawable.bg_thursday, R.drawable.bg_friday, R.drawable.bg_saturday};
+    // Same animal, darkened, shown instead during night (dayPart() == 3) so the screen doesn't light up the room.
+    private static final int[] WEEKDAY_BACKGROUNDS_NIGHT = {
+            R.drawable.bg_sunday_night, R.drawable.bg_monday_night, R.drawable.bg_tuesday_night,
+            R.drawable.bg_wednesday_night, R.drawable.bg_thursday_night, R.drawable.bg_friday_night,
+            R.drawable.bg_saturday_night};
 
     private static int dayPart() {
         int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
@@ -580,7 +585,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     }
 
     private void updateBackground() {
-        int res = WEEKDAY_BACKGROUNDS[weekDay()];
+        int day = weekDay();
+        int res = dayPart() == 3 ? WEEKDAY_BACKGROUNDS_NIGHT[day] : WEEKDAY_BACKGROUNDS[day];
         if (res == bgRes) return;
         boolean first = bgRes == 0;
         bgRes = res;

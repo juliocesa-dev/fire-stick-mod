@@ -58,8 +58,8 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
         DOCK_ICONS.put("com.netflix.ninja", "dock_netflix");
         DOCK_ICONS.put("com.amazon.firebat", "dock_prime");
         DOCK_ICONS.put("com.apple.airplay.amazon.airplay", "dock_airplay");
-        DOCK_ICONS.put("com.crunchyroll.crunchyroid", "dock_crunchyroll");
-        DOCK_ICONS.put("com.hbo.hbonow", "dock_hbomax");
+        // Crunchyroll and HBO Max have no hand-drawn square art; they fill the dock tile with their own
+        // real icon instead (see the `fill` branch in onBindViewHolder).
     }
 
     static final class Entry {
@@ -216,12 +216,15 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
         h.shadow.setScaleY(1f);
         h.shadow.setTranslationY(0f);
         h.label.setVisibility(View.GONE);
-        boolean art = e.square != null;
-        h.card.setBackground(art ? null : ctx.getDrawable(R.drawable.dock_tile_bg));
-        h.banner.setImageDrawable(e.square);
-        h.banner.setVisibility(art ? View.VISIBLE : View.GONE);
-        h.icon.setImageDrawable(art ? null : e.icon);
-        h.icon.setVisibility(art ? View.GONE : View.VISIBLE);
+        // Hand-drawn square art fills the tile edge to edge. Docked apps without one still fill it, using
+        // their own real icon (scaled to cover, cropping any transparent adaptive-icon margin) instead of
+        // sitting small and padded on a graphite tile. Grid (non-docked) apps without art keep the small icon.
+        boolean fill = e.square != null || docked;
+        h.card.setBackground(fill ? null : ctx.getDrawable(R.drawable.dock_tile_bg));
+        h.banner.setImageDrawable(e.square != null ? e.square : e.icon);
+        h.banner.setVisibility(fill ? View.VISIBLE : View.GONE);
+        h.icon.setImageDrawable(fill ? null : e.icon);
+        h.icon.setVisibility(fill ? View.GONE : View.VISIBLE);
         h.card.setOnClickListener(v -> launch(e));
         h.card.setOnLongClickListener(v -> {
             int pos = h.getBindingAdapterPosition();
