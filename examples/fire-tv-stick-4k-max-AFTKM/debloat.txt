@@ -1,0 +1,38 @@
+# Fire TV Stick 4K Max (2nd Gen), model AFTKM (karat), Fire OS 8 / Android 11
+# Packages are disabled for user 0, never uninstalled. Undo with tools/restore.sh.
+# Amazon's launcher (com.amazon.tv.launcher) stays enabled: Fire OS needs it.
+# Alexa, casting (cast.sink/dialservice/awvflingreceiver), firmware updates (forcedotaupdater/ota)
+# and the streaming apps in use (Netflix, Disney+, HBO Max, YouTube, Crunchyroll) were
+# intentionally left untouched per user preference.
+# Fire OS refuses these as protected packages (SecurityException), so they are not listed:
+#   com.amazon.device.crashmanager, com.amazon.device.logmanager,
+#   com.amazon.device.metrics, com.amazon.ftvads.deeplinking
+# Undo everything:
+#   TV_HOST=192.168.1.16 tools/restore.sh examples/fire-tv-stick-4k-max-AFTKM/debloat.txt
+
+# Ads
+com.amazon.hybridadidservice      # advertising ID used for ad targeting
+com.amazon.kso.blackbird          # sponsored screensaver and lock-screen ads
+com.amazon.shoptv.client          # shopping upsell app
+com.amazon.shoptv.firetv.client   # shopping upsell client
+com.amazon.media.recommendations  # content recommendation rows
+com.amazon.minitv.android.app     # Amazon MiniTV short-video/ad app
+com.amazon.gamehub                # Amazon Luna/GameHub promo app
+com.amazon.tv.website_launcher    # promotional browser shortcut
+com.mubi                          # streaming app not in use (user request)
+
+# Telemetry
+com.amazon.device.telemetry.emitter
+com.amazon.perfc
+com.amazon.perfcollection
+com.amazon.client.metrics.api
+com.amazon.wirelessmetrics.service
+com.amazon.dp.logger
+com.amazon.csm.htmlruntime
+
+# Post-setup tutorials / promos
+com.amazon.storm.lightning.tutorial
+com.amazon.tmm.tutorial
+com.amazon.tv.earlyaccess
+com.amazon.sneakpeek
+com.amazon.tv.releasenotes
