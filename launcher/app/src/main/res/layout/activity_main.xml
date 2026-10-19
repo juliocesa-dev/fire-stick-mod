@@ -148,6 +148,7 @@
                     style="@style/TopIconButton"
                     android:contentDescription="@string/inputs"
                     android:drawableStart="@drawable/ic_input"
+                    android:visibility="gone"
                     android:nextFocusDown="@+id/grid" />
 
                 <TextView
