@@ -57,13 +57,12 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
         DOCK_ICONS.put("com.amazon.firetv.youtube", "dock_youtube");
         DOCK_ICONS.put("com.netflix.ninja", "dock_netflix");
         DOCK_ICONS.put("com.apple.airplay.amazon.airplay", "dock_airplay");
+        // Prime Video: its real icon via ImageView centerCrop clips the wordmark (AdaptiveIconDrawable scaling
+        // quirk), so this is a baked copy of that same real icon instead (tools/bake_prime_icon.py).
+        DOCK_ICONS.put("com.amazon.firebat", "dock_prime");
         // Crunchyroll, HBO Max, Disney+ have no hand-drawn square art; they fill the dock tile with their own
         // real icon instead (see the `fill` branch in onBindViewHolder).
     }
-
-    // Prime Video's own icon bleeds text past its safe area, which clips at this tile's rounded corners when
-    // filled edge to edge; it keeps the small-icon-on-tile treatment instead (see `fill` in onBindViewHolder).
-    private static final java.util.Set<String> NO_FILL = java.util.Collections.singleton("com.amazon.firebat");
 
     static final class Entry {
         final String label;
@@ -222,7 +221,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
         // Hand-drawn square art fills the tile edge to edge. Docked apps without one still fill it, using
         // their own real icon (scaled to cover, cropping any transparent adaptive-icon margin) instead of
         // sitting small and padded on a graphite tile. Grid (non-docked) apps without art keep the small icon.
-        boolean fill = (e.square != null || docked) && !NO_FILL.contains(e.pkg);
+        boolean fill = e.square != null || docked;
         h.card.setBackground(fill ? null : ctx.getDrawable(R.drawable.dock_tile_bg));
         h.banner.setImageDrawable(e.square != null ? e.square : e.icon);
         h.banner.setVisibility(fill ? View.VISIBLE : View.GONE);
