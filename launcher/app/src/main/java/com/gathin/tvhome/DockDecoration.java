@@ -28,8 +28,8 @@ public class DockDecoration extends RecyclerView.ItemDecoration {
         int pos = parent.getChildAdapterPosition(view);
         int n = adapter.dockCount();
         if (pos < 0 || pos >= n) return;
-        outRect.top = (int) (6 * density);
-        outRect.bottom = (int) (12 * density);
+        outRect.top = (int) (7 * density);
+        outRect.bottom = (int) (14 * density);
         float inner = parent.getMeasuredWidth() - parent.getPaddingLeft() - parent.getPaddingRight();
         float actual = (pos + 0.5f) * inner / n;
         float wanted = inner / 2f + (pos - (n - 1) / 2f) * inner / columns;
