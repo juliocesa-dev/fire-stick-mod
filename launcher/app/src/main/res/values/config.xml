@@ -10,8 +10,8 @@
     <string-array name="dock_apps">
         <item>com.amazon.firetv.youtube</item>
         <item>com.netflix.ninja</item>
-        <item>com.amazon.firebat</item>
-        <item>com.apple.airplay.amazon.airplay</item>
+        <item>com.crunchyroll.crunchyroid</item>
+        <item>com.hbo.hbonow</item>
     </string-array>
 
     <!-- Apps never shown as tiles (e.g. the Live TV app, which the Inputs menu already covers). -->
