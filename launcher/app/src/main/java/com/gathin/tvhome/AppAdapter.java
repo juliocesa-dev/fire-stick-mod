@@ -58,6 +58,8 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
         DOCK_ICONS.put("com.netflix.ninja", "dock_netflix");
         DOCK_ICONS.put("com.amazon.firebat", "dock_prime");
         DOCK_ICONS.put("com.apple.airplay.amazon.airplay", "dock_airplay");
+        DOCK_ICONS.put("com.crunchyroll.crunchyroid", "dock_crunchyroll");
+        DOCK_ICONS.put("com.hbo.hbonow", "dock_hbomax");
     }
 
     static final class Entry {

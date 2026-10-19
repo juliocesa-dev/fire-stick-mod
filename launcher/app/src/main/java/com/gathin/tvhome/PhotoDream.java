@@ -24,9 +24,8 @@ import java.util.List;
 public class PhotoDream extends DreamService {
 
     private static final int[] PHOTOS = {
-            R.drawable.saver_01, R.drawable.saver_02, R.drawable.saver_03, R.drawable.saver_04,
-            R.drawable.saver_05, R.drawable.saver_06, R.drawable.saver_07, R.drawable.saver_08,
-            R.drawable.saver_09, R.drawable.saver_10, R.drawable.saver_11, R.drawable.saver_12};
+            R.drawable.bg_sunday, R.drawable.bg_monday, R.drawable.bg_tuesday, R.drawable.bg_wednesday,
+            R.drawable.bg_thursday, R.drawable.bg_friday, R.drawable.bg_saturday};
     private static final long SLIDE_MS = 20_000;
     private static final long FADE_MS = 2_500;
     private static final float ZOOM = 1.08f;   // reached over one slide, then the next photo takes over

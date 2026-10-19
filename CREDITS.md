@@ -4,22 +4,18 @@
 
 The background and screensaver photos in `launcher/app/src/main/res/drawable-nodpi/` come from
 [Unsplash](https://unsplash.com) and are used under the [Unsplash License](https://unsplash.com/license).
-They are cropped to 1920×1080.
+They are cropped to 1920×1080. One animal per day of the week, used as both the home background
+(`MainActivity.WEEKDAY_BACKGROUNDS`) and the screensaver rotation (`PhotoDream.PHOTOS`).
 
-| File | Used as | Photo | Photographer |
+| File | Day | Photo | Photographer |
 |---|---|---|---|
-| `saver_01.jpg` | Screensaver | [Skyline from Hoboken](https://unsplash.com/photos/new-york-city-skyline-from-hoboken-kZokA2VTKn4) | [@mikechv](https://unsplash.com/@mikechv) |
-| `saver_02.jpg`, `bg_morning.jpg` | Screensaver, morning background | [Skyline over the water](https://unsplash.com/photos/a-city-skyline-with-a-body-of-water-in-the-foreground-KWTHWm7JPao) | [@philton88](https://unsplash.com/@philton88) |
-| `saver_03.jpg` | Screensaver | [Skyline across the water by day](https://unsplash.com/photos/city-skyline-across-body-of-water-during-daytime-cSNKRFoYREE) | [@notsphinx](https://unsplash.com/@notsphinx) |
-| `saver_04.jpg` | Screensaver | [City across the harbor](https://unsplash.com/photos/a-large-body-of-water-with-a-city-in-the-background-wymdBxTP-CI) | [@marttisalmi](https://unsplash.com/@marttisalmi) |
-| `saver_05.jpg` | Screensaver | [Skyline across the water by day](https://unsplash.com/photos/city-skyline-across-body-of-water-during-daytime-ApKGyT9GHzI) | [@siegfriedpoepperl](https://unsplash.com/@siegfriedpoepperl) |
-| `saver_06.jpg`, `bg_afternoon.jpg` | Screensaver, afternoon background | [High-rise buildings](https://unsplash.com/photos/brown-and-gray-high-rise-buildings-MMdf6NlivGs) | [@eejermaine](https://unsplash.com/@eejermaine) |
-| `saver_07.jpg`, `bg_evening.jpg` | Screensaver, evening background | [Bird's-eye view at sunset](https://unsplash.com/photos/birds-eye-photography-of-high-rise-buildings-DitA7EZdgoM) | [@emilianobar](https://unsplash.com/@emilianobar) |
-| `saver_08.jpg` | Screensaver | [Brooklyn Bridge at dusk](https://unsplash.com/photos/black-and-gray-concrete-bridge-Ufh2j_ChvcM) | [@rustyspear11](https://unsplash.com/@rustyspear11) |
-| `saver_09.jpg` | Screensaver | [Brooklyn Bridge panorama](https://unsplash.com/photos/panoramic-photography-of-brooklyn-bridge-_QdFx92MO2U) | [@lucabravo](https://unsplash.com/@lucabravo) |
-| `saver_10.jpg` | Screensaver | [Skyline at night](https://unsplash.com/photos/city-skyline-during-night-time-4WbKrmdJfU0) | [@ndrf](https://unsplash.com/@ndrf) |
-| `saver_11.jpg` | Screensaver | [Aerial view at night](https://unsplash.com/photos/aerial-photography-of-city-fPaCAQKkRqY) | [@jonathanroger](https://unsplash.com/@jonathanroger) |
-| `saver_12.jpg`, `bg_night.jpg` | Screensaver, night background | [Midtown from above](https://unsplash.com/photos/aerial-phto-of-buildings-2SZIcxGzTj8) | [@ruddymedia](https://unsplash.com/@ruddymedia) |
+| `bg_sunday.jpg` | Sunday | [Shark swimming in deep blue ocean water](https://unsplash.com/photos/VIJhbkSrKNs) | [Maahid Photos](https://unsplash.com/@maahidphotos) |
+| `bg_monday.jpg` | Monday | [Green chameleon on a brown wooden pole](https://unsplash.com/photos/N_GrR8c2EMk) | [Igor Omilaev](https://unsplash.com/@omilaev) |
+| `bg_tuesday.jpg` | Tuesday | [Brown and black snake](https://unsplash.com/photos/EPLrqHHu2WI) | [Jan Kopřiva](https://unsplash.com/@jkopriva) |
+| `bg_wednesday.jpg` | Wednesday | [Black cat close-up](https://unsplash.com/photos/sfp4jUfgLhg) | [Akin Cakiner](https://unsplash.com/@akin) |
+| `bg_thursday.jpg` | Thursday | [Dog running on the beach](https://unsplash.com/photos/yihlaRCCvd4) | [Oscar Sutton](https://unsplash.com/@oscarsutton) |
+| `bg_friday.jpg` | Friday | [A large tiger walks through dry grass in a forest](https://unsplash.com/photos/AwEuTojkQdA) | [Bob Brewer](https://unsplash.com/@bobbrewer) |
+| `bg_saturday.jpg` | Saturday | [School of fish on corals](https://unsplash.com/photos/s23xDAYQBCo) | [SGR](https://unsplash.com/@sgr) |
 
 ## Fonts
 
@@ -30,4 +26,6 @@ under the SIL Open Font License.
 
 The dock icons for YouTube, Netflix, Prime Video and AirPlay are trademarks of their owners and are not in
 this repo. `tools/make_dock_icons.py` draws them on your machine. The Prime Video wordmark comes from
-[Simple Icons](https://simpleicons.org) (CC0).
+[Simple Icons](https://simpleicons.org) (CC0). `tools/make_extra_dock_icons.py` draws simplified,
+non-trademark tiles for Crunchyroll and HBO Max in the same style (brand color + monogram/wordmark),
+for personal use.

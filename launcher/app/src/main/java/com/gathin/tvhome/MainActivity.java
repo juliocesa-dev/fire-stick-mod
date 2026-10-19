@@ -552,11 +552,13 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
 
     // ---- top bar ---------------------------------------------------------------------------------
 
-    // Morning 5-12, afternoon 12-17, evening 17-22, night 22-5. Indexes GREETINGS and BACKGROUNDS.
+    // Morning 5-12, afternoon 12-17, evening 17-22, night 22-5. Indexes GREETINGS.
     private static final int[] GREETINGS = {
             R.string.good_morning, R.string.good_afternoon, R.string.good_evening, R.string.good_night};
-    private static final int[] BACKGROUNDS = {
-            R.drawable.bg_morning, R.drawable.bg_afternoon, R.drawable.bg_evening, R.drawable.bg_night};
+    // One background per day of the week, indexed by Calendar.DAY_OF_WEEK - 1 (Sunday = 0).
+    private static final int[] WEEKDAY_BACKGROUNDS = {
+            R.drawable.bg_sunday, R.drawable.bg_monday, R.drawable.bg_tuesday, R.drawable.bg_wednesday,
+            R.drawable.bg_thursday, R.drawable.bg_friday, R.drawable.bg_saturday};
 
     private static int dayPart() {
         int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
@@ -567,6 +569,10 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         return 3;
     }
 
+    private static int weekDay() {
+        return Calendar.getInstance().get(Calendar.DAY_OF_WEEK) - 1;
+    }
+
     private void updateGreeting() {
         String text = getString(GREETINGS[dayPart()]);
         String name = getString(R.string.user_name).trim();
@@ -574,7 +580,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     }
 
     private void updateBackground() {
-        int res = BACKGROUNDS[dayPart()];
+        int res = WEEKDAY_BACKGROUNDS[weekDay()];
         if (res == bgRes) return;
         boolean first = bgRes == 0;
         bgRes = res;
